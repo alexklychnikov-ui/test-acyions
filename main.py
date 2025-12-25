@@ -22,6 +22,19 @@ def get_server_time():
     }
 
 
+@app.get("/date")
+def get_server_date():
+    now = datetime.now()
+    return {
+        "date": now.date().isoformat(),
+        "year": now.year,
+        "month": now.month,
+        "day": now.day,
+        "weekday": now.strftime("%A"),
+        "formatted_date": now.strftime("%d.%m.%Y")
+    }
+
+
 @app.get("/health")
 def health_check():
     return {
